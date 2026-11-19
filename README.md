@@ -116,15 +116,15 @@ Outputs:
 
 For every adjacent transition, fit:
 
-\[
+$$
 T_{i,n}=\beta_{0,n}+\beta_{1,n}T_{i,n-1}+\epsilon_{i,n}
-\]
+$$
 
 where `i` indexes historical students. The student-level residual is:
 
-\[
+$$
 e_{i,n}=T_{i,n}-\widehat T_{i,n}
-\]
+$$
 
 The script estimates residual mean and standard deviation from **out-of-fold (OOF)** predictions when there are enough rows. OOF residuals are less optimistic than residuals calculated on the same observations used to fit the model. These reference values are later used to standardise residuals.
 
@@ -132,15 +132,15 @@ The script estimates residual mean and standard deviation from **out-of-fold (OO
 
 For each configured target test `q`:
 
-\[
+$$
 \widehat T_{i,q}=\beta_0+\sum_{j=1}^{q-1}\beta_jT_{i,j}
-\]
+$$
 
 Ridge minimises:
 
-\[
+$$
 \sum_i(T_{i,q}-\widehat T_{i,q})^2+\lambda\sum_j\beta_j^2
-\]
+$$
 
 The script uses `StandardScaler` plus `Ridge`, and selects alpha using cross-validated mean absolute error. It also performs leave-one-feature-out CV ablation: each earlier test is removed in turn, and the change in CV MAE is reported. If MAE increases when a test is removed, that test carried predictive information beyond the other included scores under this model.
 
@@ -186,9 +186,9 @@ One row per student, containing:
 
 The standardised residual is:
 
-\[
+$$
 z_{i,n}=\frac{e_{i,n}-\mu_{e,n}}{s_{e,n}}
-\]
+$$
 
 where `mu` and `s` are the historical OOF residual mean and standard deviation for that transition. Positive means above historical transition expectation; negative means below it.
 
