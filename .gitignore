@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+
+model_artifacts/
+scoring_output/
+
+*.csv
+*.joblib
+
+config_train.json
+config_score.json
+
+.venv/

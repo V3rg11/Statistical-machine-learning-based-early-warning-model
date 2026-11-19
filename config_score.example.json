@@ -1,0 +1,5 @@
+{
+  "id_column": "candidate_number",
+  "cohort_column": "class_group",
+  "test_columns": ["m1", "m2", "m3", "m4", "m5"]
+}
